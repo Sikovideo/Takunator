@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takunator</title>
+    <style>
+        /* 背景画像を設定 */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('背景16.png'); /* 背景画像のパス */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100vh;
+            color: black; /* 文字の色を黒に設定 */
+        }
+
+        /* 表示エリアのスタイル */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+            color: black; /* 文字の色を黒に設定 */
+            height: 30.66vh; /* 画面下部の3分の2に収める */
+            box-sizing: border-box;
+        }
+
+        /* 各要素のスタイル */
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .image img {
+            max-width: 80%; /* 横幅を80%に制限 */
+            height: auto;
+            margin: 20px 0;
+            border-radius: 10px; /* 画像に角丸をつける */
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .details {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="displayArea" class="container"></div>
+
+<script>
+    // 表示するパターンの内容を配列で定義
+    const patterns = [
+        {
+            title: "思い浮かべてるのは",
+            image: "結果1.png", // 画像のパスを指定
+            name: "たくみ",
+            details: "やりちん、性病持ち"
+        },
+        {
+            title: "思い浮かべてるのは",
+            image: "結果2.png",
+            name: "石城たくみ,
+            details: "まことの息子"
+        },
+        {
+            title: "思い浮かべてるのは",
+            image: "結果3.png",
+            name: "がーどまん",
+            details: "ほぼたくみ"
+        }
+    ];
+
+    // ランダムにパターンを選択して表示
+    function displayRandomPattern() {
+        const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
+        document.getElementById("displayArea").innerHTML = `
+            <div class="title">${randomPattern.title}</div>
+            <div class="image"><img src="${randomPattern.image}" alt="画像"></div>
+            <div class="name">${randomPattern.name}</div>
+            <div class="details">${randomPattern.details}</div>
+        `;
+    }
+
+    // ページ読み込み時にランダム表示
+    window.onload = displayRandomPattern;
+</script>
+
+</body>
+</html>
