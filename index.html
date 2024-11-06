@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takunator</title>
+    <style>
+        /* 背景画像とレイアウト設定 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* 下部に配置 */
+            height: 100vh;
+            background-image: url('背景15.png');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #000;
+            overflow: hidden;
+        }
+        #questionBox {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 31%; /* 画面下部に配置 */
+            color: #000; /* テキスト色を黒に設定 */
+        }
+        /* 下半分クリックエリア */
+        #clickArea {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%; /* 画面の下半分 */
+        }
+    </style>
+</head>
+<body>
+
+<div id="questionBox">
+    <span id="questionNumber">質問1</span><br>
+    <span id="questionText">名前が｢た｣から始まりますか？</span>
+</div>
+
+<!-- 下半分クリックエリア -->
+<div id="clickArea"></div>
+
+<audio id="backgroundMusic" src="akineta.mp3" loop></audio>
+
+<script>
+    // 音楽の自動再生設定を後で行う
+    const music = document.getElementById("backgroundMusic");
+
+    // 質問内容リスト
+    const questions = [
+        "変態ですか？",
+        "坊主ですか？",
+        "石城食堂創設者ですか？",
+        "もしかして石城ですか？",
+        "ちーちゃんと呼ばれますか？",
+        "ちんこが大きいとよく言われますか？",
+        "彼女出来たことが無いですね？",
+        "ブスですね？",
+        "カスですね？",
+        "音ゲーしかしてませんね？"
+    ];
+    let currentQuestionIndex = 0;
+
+    // 質問ボックスの参照
+    const questionNumber = document.getElementById("questionNumber");
+    const questionText = document.getElementById("questionText");
+
+    // 下半分クリックエリアの参照
+    const clickArea = document.getElementById("clickArea");
+
+    // 下半分クリックエリアにイベントリスナーを追加
+    clickArea.addEventListener("click", () => {
+        // 音楽の再生
+        music.play().catch(error => {
+            console.error("音楽の再生に失敗:", error);
+        });
+
+        // 一時的に「･･･」を表示
+        questionText.innerText = "･･･";
+
+        setTimeout(() => {
+            // 次の質問に進む
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                // 質問番号と内容を更新
+                questionNumber.innerText = "質問" + (currentQuestionIndex + 1);
+                questionText.innerText = questions[currentQuestionIndex];
+            } else {
+                // 全質問終了後、結果ページに移動
+                window.location.href = "kekka.html";
+            }
+        }, 1000); // 1秒待機
+    });
+</script>
+
+</body>
+</html>
