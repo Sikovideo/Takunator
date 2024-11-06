@@ -69,24 +69,30 @@
             title: "思い浮かべてるのは",
             image: "結果1.png", // 画像のパスを指定
             name: "たくみ",
-            details: "やりちん、性病持ち"
+            details: "やりちん"
         },
         {
             title: "思い浮かべてるのは",
             image: "結果2.png",
-            name: "石城たくみ,
+            name: "石城たくみ",
             details: "まことの息子"
+        },
+        {
+            title: "思い浮かべてるのは",
+            image: "結果4.png",
+            name: "たくみの彼女",
+            details: "げきかわすぎる"
         },
         {
             title: "思い浮かべてるのは",
             image: "結果3.png",
             name: "がーどまん",
             details: "ほぼたくみ"
-        },
+        }
     ];
 
     // ランダムにパターンを選択して表示
-    function displayRandomPattern() {
+    function displayRandomPattern() {げきかわすぎる
         const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
         document.getElementById("displayArea").innerHTML = `
             <div class="title">${randomPattern.title}</div>
